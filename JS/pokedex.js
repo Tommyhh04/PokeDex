@@ -1,3 +1,8 @@
+//Grabs the #search-bar and #search-btn from html and stores in a variable
+const searchPoke = document.querySelector("#search-bar");
+const buttonSearch = document.querySelector("search-btn");
+
+
 //How many pokemons that should be rendered in the pokedex list
 const pokemonCount = 151;
 //Storage for each pokemon. Name , image,  type, description.
@@ -89,3 +94,40 @@ function updatePokemon() {
       pokeDex[this.id]["description"];
   }
 }
+
+//Search function
+
+function searchPokemon() {
+  //Gets the search input
+  searchPoke;
+
+  //Gets the input from search bar
+  let searchText = input.value;
+
+  //Gets the element to search inside of
+  let elementToSearch = pokeDex;
+
+  //Performs the search
+
+  let searchResult = elementToSearch.filter(function (element) {
+    return element.toLowerCase().includes(searchText);
+  });
+  //Displays the search result
+
+  let resultList = document.querySelector("#search-result");
+  resultsList.textContent = "";
+
+  searchResult.forEach(function (result) {
+    let listItem = document.createElement("li");
+    listItem.textContent = result;
+    resultList.appendChild(listItem);
+  });
+}
+
+//EventListener for button press on search
+
+buttonSearch.addEventListener("keyup", searchPokemon);
+
+
+
+
